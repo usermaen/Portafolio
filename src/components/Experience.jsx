@@ -1,8 +1,11 @@
 import React from 'react'
 import { Briefcase } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useTheme } from '../context/ThemeContext'
 
 const Experience = () => {
+  const { isDark } = useTheme()
+
   const experiencias = [
     {
       cargo: 'Intern - Digital Process Improvement',
@@ -30,7 +33,9 @@ const Experience = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">
+          <h2 className={`text-4xl font-bold mb-4 ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>
             Experiencia{' '}
             <span className="text-cyan-400">Laboral</span>
           </h2>
@@ -40,7 +45,9 @@ const Experience = () => {
         {/* Timeline de experiencias */}
         <div className="relative">
           {/* Línea vertical */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-slate-700"></div>
+          <div className={`hidden md:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full ${
+            isDark ? 'bg-slate-700' : 'bg-gray-300'
+          }`}></div>
 
           {experiencias.map((exp, index) => (
             <motion.div
@@ -54,28 +61,38 @@ const Experience = () => {
               }`}
             >
               {/* Punto en la línea */}
-              <div className="hidden md:block absolute top-6 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full border-4 border-slate-950"></div>
+              <div className={`hidden md:block absolute top-6 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full border-4 ${
+                isDark ? 'border-slate-950' : 'border-gray-50'
+              }`}></div>
 
               {/* Contenido de la experiencia */}
-              <div className={`bg-slate-800 p-6 rounded-lg shadow-lg hover:shadow-cyan-500/20 transition-shadow duration-300 ${
-                index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'
-              }`}>
+              <div className={`p-6 rounded-lg shadow-lg transition-all duration-300 ${
+                isDark 
+                  ? 'bg-slate-800 hover:shadow-cyan-500/20' 
+                  : 'bg-white hover:shadow-cyan-500/10'
+              } ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
                 {/* Header con cargo y empresa */}
                 <div className="flex items-start gap-3 mb-3">
                   <Briefcase className="text-cyan-400 flex-shrink-0 mt-1" size={20} />
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-white">{exp.cargo}</h3>
+                    <h3 className={`text-xl font-bold ${
+                      isDark ? 'text-white' : 'text-gray-900'
+                    }`}>{exp.cargo}</h3>
                     <p className="text-cyan-400">{exp.empresa}</p>
                   </div>
                 </div>
 
                 {/* Periodo */}
-                <p className="text-sm text-slate-400 mb-4">{exp.periodo}</p>
+                <p className={`text-sm mb-4 ${
+                  isDark ? 'text-slate-400' : 'text-gray-600'
+                }`}>{exp.periodo}</p>
 
                 {/* Descripción como lista */}
                 <ul className="space-y-2 mb-4">
                   {exp.descripcion.map((item, i) => (
-                    <li key={i} className="text-slate-300 flex items-start gap-2">
+                    <li key={i} className={`flex items-start gap-2 ${
+                      isDark ? 'text-slate-300' : 'text-gray-700'
+                    }`}>
                       <span className="text-cyan-400 mt-1.5 flex-shrink-0">•</span>
                       <span>{item}</span>
                     </li>
@@ -87,7 +104,11 @@ const Experience = () => {
                   {exp.tecnologias.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-3 py-1 bg-slate-700 text-cyan-400 text-sm rounded-full border border-cyan-400/30"
+                      className={`px-3 py-1 text-sm rounded-full border ${
+                        isDark 
+                          ? 'bg-slate-700 text-cyan-400 border-cyan-400/30' 
+                          : 'bg-cyan-50 text-cyan-600 border-cyan-200'
+                      }`}
                     >
                       {tech}
                     </span>

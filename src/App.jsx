@@ -5,10 +5,15 @@ import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
 import Footer from './components/Footer'
+import { useTheme } from './context/ThemeContext'
 
 function App() {
+  const { isDark } = useTheme()
+
   return (
-    <div className="bg-slate-950 text-slate-100 min-h-screen">
+    <div className={`${
+      isDark ? 'bg-slate-950 text-slate-100' : 'bg-gray-50 text-gray-900'
+    } min-h-screen transition-colors duration-300`}>
       {/* Navbar fijo en la parte superior */}
       <Navbar />
       

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Download, Menu, X } from 'lucide-react'
+import { Download, Menu, X, Sun, Moon } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { useTheme } from '../context/ThemeContext'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { isDark, toggleTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -28,7 +30,9 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg' 
+          ? isDark 
+            ? 'bg-slate-900/95 backdrop-blur-sm shadow-lg'
+            : 'bg-white/95 backdrop-blur-sm shadow-lg'
           : 'bg-transparent'
       }`}
     >
@@ -42,18 +46,36 @@ const Navbar = () => {
             Portfolio
           </motion.a>
 
-          {/* Menu Desktop - CORREGIDO ABAJO */}
+          {/* Menu Desktop */}
           <div className="hidden md:flex items-center space-x-8">
             {menuItems.map((item) => (
               <a 
                 key={item.name}
                 href={item.href}
-                className="text-slate-300 hover:text-cyan-400 transition-colors duration-200"
+                className={`transition-colors duration-200 ${
+                  isDark 
+                    ? 'text-slate-300 hover:text-cyan-400' 
+                    : 'text-gray-700 hover:text-cyan-500'
+                }`}
               >
                 {item.name}
               </a>
             ))}
             
+            {/* Toggle de Tema */}
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-lg transition-colors ${
+                isDark 
+                  ? 'bg-slate-800 hover:bg-slate-700 text-yellow-400' 
+                  : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
+              }`}
+              aria-label="Cambiar tema"
+            >
+              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+
+            {/* Botón CV */}
             <a 
               href="/cv.pdf"
               download
@@ -64,15 +86,29 @@ const Navbar = () => {
             </a>
           </div>
 
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-slate-300 hover:text-cyan-400"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Botón menú móvil */}
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-lg transition-colors ${
+                isDark 
+                  ? 'bg-slate-800 text-yellow-400' 
+                  : 'bg-gray-200 text-gray-700'
+              }`}
+            >
+              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={isDark ? 'text-slate-300 hover:text-cyan-400' : 'text-gray-700 hover:text-cyan-500'}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
-        {/* Menu Mobile - CORREGIDO ABAJO */}
+        {/* Menu Mobile */}
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -83,7 +119,11 @@ const Navbar = () => {
               <a 
                 key={item.name}
                 href={item.href}
-                className="block text-slate-300 hover:text-cyan-400 transition-colors duration-200"
+                className={`block transition-colors duration-200 ${
+                  isDark 
+                    ? 'text-slate-300 hover:text-cyan-400' 
+                    : 'text-gray-700 hover:text-cyan-500'
+                }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
