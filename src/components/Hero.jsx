@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
 // Importa tu foto desde assets
-import profilePhoto from '../assets/profile.jpg' // Cambia el nombre según tu archivo
+import profilePhoto from '../assets/foto de perfil.jpg' // Cambia el nombre según tu archivo
 
 const Hero = () => {
   const { isDark } = useTheme()
