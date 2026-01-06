@@ -10,10 +10,10 @@ const Experience = () => {
       periodo: 'Noviembre 2025 - Marzo 2026 (650 horas)',
       descripcion: [
         "Lideré la transición de flujos de trabajo basados en hojas de cálculo hacia un ecosistema digital integrado (Microsoft Power Platform).",
-        "Migración de datos críticos desde Excel a Listas de SharePoint, eliminando caídas de sistema por exceso de información.",
-        "Automatización de procesos mediante Power Automate para la sincronización y limpieza de registros.",
-        "Desarrollo de aplicaciones Low-Code intuitivas para usuarios finales conectadas a SharePoint.",
-        "Creación de dashboards dinámicos para la visualización de datos en tiempo real."
+        "Migración de datos críticos desde Excel a Listas de SharePoint, eliminando caídas de sistema por exceso de información y usuarios al mismo tiempo.",
+        "Automatización de procesos mediante flujos de Power Automate para la sincronización y limpieza de registros.",
+        "Desarrollo de aplicaciones Low-Code intuitivas con power Apps para usuarios finales conectadas a listas de SharePoint.",
+        "Creación de dashboards dinámicos con Power BI para la visualización de datos en tiempo real."
       ],
       tecnologias: ["Power Apps", "Power Automate", "SharePoint", "Power BI", "Excel"]
     },

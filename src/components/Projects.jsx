@@ -5,53 +5,67 @@ import { motion } from 'framer-motion'
 const Projects = () => {
   const proyectos = [
     {
-      titulo: 'Busquidy',
-      descripcion: 'Plataforma de comercio electrónico completa con carrito de compras, pasarela de pagos y panel de administración. Desarrollada con React, Redux y Node.js.',
+      titulo: 'Busquidy (Página Web)',
+      descripcion: 'Plataforma digital que permite generar experiencia e ingresos a estudiantes, además de entregar un espacio seguro y confiable a PYMEs; permite conectar estudiantes con PYMEs en un entorno seguro y confiable (Busquidy).',
       tecnologias: ['React', 'Vite', 'Node.js', 'Express.js', 'Tailwind CSS', 'Cloud SQL'],
       github: 'https://github.com/John-Testx/busquidy_project_1',
       demo: 'https://busquidy-project-1.vercel.app/'
+      // En esta tarjeta debemos de hacer varios ajustes en el "Codigo", ya que esto permite solamente ingresar un link de github, este proyecto necesita poder mostrar 3 links de git hub.
+      // Información: Plataforma web desplegada en vercel (Front end), railway (backend y fastAPI) y GCP (Base de datos y demas archivos).
     },
     {
       titulo: 'Reporte en Power BI',
-      descripcion: 'Aplicación de gestión de tareas con funcionalidades de drag & drop, colaboración en tiempo real y notificaciones. Built con React y Firebase.',
-      tecnologias: ['React', 'Firebase', 'Tailwind CSS'],
+      descripcion: 'Generación de reporte para el análisis de datos, automatización de procesos operativos utilizando herramientas predictivas e inteligencia artificial en una empresa ficticia (Transformación Digital).',
+      tecnologias: ['Power BI', 'Excel'],
       github: 'https://github.com/tuusuario/proyecto2',
       demo: 'https://demo-proyecto2.com'
+      // Aca deberiamos de dejar algo asi como los botones "No disponible" o algo asi
+      // Información: Debido al alcance academico el reporte no se publico.
     },
     {
       titulo: 'Mineria de Datos | Exploración de Datos (EDA)',
-      descripcion: 'Aplicación de gestión de tareas con funcionalidades de drag & drop, colaboración en tiempo real y notificaciones. Built con React y Firebase.',
-      tecnologias: ['React', 'Firebase', 'Tailwind CSS'],
-      github: 'https://github.com/tuusuario/proyecto2',
+      descripcion: 'Exploración, comprensión y limpieza de datos de varios datasets aplicando técnicas predictivas como; Árboles de Desición, Random Forest y Naive Bayes, con Google Colab.',
+      tecnologias: ['Python', 'Excel', 'Google Colab'],
+      github: 'https://colab.research.google.com/drive/161Pf_CdYg03TG6y1JufN0STnKqjkbGD3?usp=sharing', 
       demo: 'https://demo-proyecto2.com'
+      // Aca hay que cambiar al logo de google colab. y Demo borrar o dejar como "No disponible"
+      // Información: No se cuenta con una limpieza de datos antigua, lo unico que se pudo dejar es la "IA de recomendación de perfiles" de la plataforma Busquidy
     },
     {
-      titulo: 'Desarrollo de Aplicación Móvil',
-      descripcion: 'Aplicación de gestión de tareas con funcionalidades de drag & drop, colaboración en tiempo real y notificaciones. Built con React y Firebase.',
-      tecnologias: ['React', 'Firebase', 'Tailwind CSS'],
+      titulo: 'AppneStatistic (App)',
+      descripcion: 'Desarrollo de aplicación móvil para la detección de fenómenos de apnea en bebés con Arduino y sensores.',
+      tecnologias: ['Java', 'Firebase', 'Android Studio', 'Arduino', 'C++'],
       github: 'https://github.com/tuusuario/proyecto2',
       demo: 'https://demo-proyecto2.com'
+      // Aca deberiamos de dejar algo asi como los botones "No disponible" o algo asi
+      // No se cuenta con el codigo fuente de desarrollo ni la base de datos.
     },
     {
-      titulo: 'Desarrollo de Video Juego',
-      descripcion: 'Aplicación de gestión de tareas con funcionalidades de drag & drop, colaboración en tiempo real y notificaciones. Built con React y Firebase.',
-      tecnologias: ['React', 'Firebase', 'Tailwind CSS'],
+      titulo: 'Rant Drive Legends (Video Juego)',
+      descripcion: 'Desarrollo de video juego 2D.',
+      tecnologias: ['C++', 'Visual Studio 2019', 'Unity'],
       github: 'https://github.com/tuusuario/proyecto2',
-      demo: 'https://demo-proyecto2.com'
+      demo: 'https://drive.google.com/file/d/15xMz__WpWHkEcWxWT0RnA5SLR16wz-6J/view?usp=sharing'
+      // Aca hay que cambiar al logo de google colab. y Github borrar o dejar como "No disponible"
+      // Información: No se cuenta con el codigo fuente de desarrollo.
     },
     {
-      titulo: 'PAEE',
-      descripcion: 'Plataforma web implementada principalmente para facilitar el aprendizaje de los estudiantes de INACAP.',
+      titulo: 'PAEE (Página Web)',
+      descripcion: 'Plataforma digital implementada principalmente para facilitar el aprendizaje de los estudiantes de INACAP.',
       tecnologias: ['React App', 'Node.js', 'Express.js', 'CSS', 'Cloud SQL'],
       github: 'https://github.com/tuusuario/proyecto3',
       demo: 'https://demo-proyecto3.com'
+      // Aca deberiamos de dejar algo asi como los botones "No disponible" o algo asi
+      // Información: No se cuenta con el codigo fuente de desarrollo ni la base de datos.
     },
     {
       titulo: 'Sistema de Gestión de Inventario',
-      descripcion: 'Desarrollo de CRUD en terminal para getionar prodcutos y usuarios de un minimarket (desarrollado en el 2° semetre de estudios)',
+      descripcion: 'Desarrollo de CRUD en terminal para gestionar productos y usuarios de un minimarket (desarrollado en el 2° semestre de estudios).',
       tecnologias: ['Python'],
       github: 'https://github.com/tuusuario/proyecto4',
       demo: 'https://demo-proyecto4.com'
+      // Aca deberiamos de dejar algo asi como los botones "No disponible" o algo asi
+      // Información:: No se cuenta con el codigo fuente de desarrollo.
     }
   ]
 
