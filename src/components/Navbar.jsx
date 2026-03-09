@@ -2,26 +2,62 @@ import React, { useState, useEffect } from 'react'
 import { Download, Menu, X, Sun, Moon } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
+// Importa tu CV desde assets
+import cvPDF from '../assets/Felipe Quiñehual  - Curriculum.pdf'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('hero')
   const { isDark, toggleTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
+      
+      // Detectar sección activa
+      const sections = ['hero', 'experiencia', 'proyectos', 'formacion', 'habilidades']
+      const scrollPosition = window.scrollY + 100 // Offset para activar antes
+      
+      for (const sectionId of sections) {
+        const section = document.getElementById(sectionId)
+        if (section) {
+          const sectionTop = section.offsetTop
+          const sectionBottom = sectionTop + section.offsetHeight
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            setActiveSection(sectionId)
+            break
+          }
+        }
+      }
     }
+    
+    handleScroll() // Llamar al inicio
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const menuItems = [
-    { name: 'Inicio', href: '#hero' },
-    { name: 'Experiencia', href: '#experiencia' },
-    { name: 'Proyectos', href: '#proyectos' },
-    { name: 'Habilidades', href: '#habilidades' },
+    { name: 'Inicio', href: '#hero', id: 'hero' },
+    { name: 'Experiencia', href: '#experiencia', id: 'experiencia' },
+    { name: 'Proyectos', href: '#proyectos', id: 'proyectos' },
+    { name: 'Formación', href: '#formacion', id: 'formacion' },
+    { name: 'Habilidades', href: '#habilidades', id: 'habilidades' },
   ]
+
+  // Función para manejar la descarga del CV
+  const handleDownloadCV = (e) => {
+    e.preventDefault()
+    
+    // Descarga desde assets
+    const link = document.createElement('a')
+    link.href = cvPDF
+    link.download = 'CV_Felipe_Quinehual_Monsalve.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
 
   return (
     <motion.nav
@@ -52,13 +88,23 @@ const Navbar = () => {
               <a 
                 key={item.name}
                 href={item.href}
-                className={`transition-colors duration-200 ${
-                  isDark 
-                    ? 'text-slate-300 hover:text-cyan-400' 
-                    : 'text-gray-700 hover:text-cyan-500'
+                className={`transition-all duration-200 relative ${
+                  activeSection === item.id
+                    ? 'text-cyan-400 font-semibold'
+                    : isDark 
+                      ? 'text-slate-300 hover:text-cyan-400' 
+                      : 'text-gray-700 hover:text-cyan-500'
                 }`}
               >
                 {item.name}
+                {activeSection === item.id && (
+                  <motion.div
+                    layoutId="activeSection"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-cyan-400"
+                    initial={false}
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
               </a>
             ))}
             
@@ -75,15 +121,14 @@ const Navbar = () => {
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
 
-            {/* Botón CV */}
-            <a 
-              href="/cv.pdf"
-              download
+            {/* Botón CV - ARREGLADO */}
+            <button
+              onClick={handleDownloadCV}
               className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg transition-colors duration-200"
             >
               <Download size={18} />
               Descargar CV
-            </a>
+            </button>
           </div>
 
           {/* Botón menú móvil */}
@@ -120,9 +165,11 @@ const Navbar = () => {
                 key={item.name}
                 href={item.href}
                 className={`block transition-colors duration-200 ${
-                  isDark 
-                    ? 'text-slate-300 hover:text-cyan-400' 
-                    : 'text-gray-700 hover:text-cyan-500'
+                  activeSection === item.id
+                    ? 'text-cyan-400 font-semibold'
+                    : isDark 
+                      ? 'text-slate-300 hover:text-cyan-400' 
+                      : 'text-gray-700 hover:text-cyan-500'
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
@@ -130,14 +177,14 @@ const Navbar = () => {
               </a>
             ))}
             
-            <a 
-              href="/cv.pdf"
-              download
+            {/* Botón CV en móvil - ARREGLADO */}
+            <button
+              onClick={handleDownloadCV}
               className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 w-fit"
             >
               <Download size={18} />
               Descargar CV
-            </a>
+            </button>
           </motion.div>
         )}
       </div>

@@ -1,9 +1,9 @@
 import React from 'react'
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
 // Importa tu foto desde assets
-import profilePhoto from '../assets/foto de perfil.jpg' // Cambia el nombre según tu archivo
+import profilePhoto from '../assets/perfil.jpg'
 
 const Hero = () => {
   const { isDark } = useTheme()
@@ -21,14 +21,11 @@ const Hero = () => {
           transition={{ duration: 0.5 }}
           className="mb-8 flex justify-center"
         >
-          <div className="relative">
-            <img 
-              src={profilePhoto} 
-              alt="Felipe Quiñehual Monsalve" 
-              className="w-40 h-40 rounded-full object-cover border-4 border-cyan-400 shadow-xl shadow-cyan-400/20"
-            />
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-400/20 to-blue-500/20"></div>
-          </div>
+          <img 
+            src={profilePhoto} 
+            alt="Felipe Quiñehual Monsalve" 
+            className="w-40 h-40 rounded-full object-cover border-4 border-cyan-400 shadow-xl shadow-cyan-400/20"
+          />
         </motion.div>
 
         {/* Animación del nombre */}
@@ -76,44 +73,67 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex justify-center gap-4"
+          className="flex flex-col items-center gap-6"
         >
-          <a 
-            href="https://github.com/usermaen"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
-              isDark 
-                ? 'bg-slate-800 hover:bg-cyan-500' 
-                : 'bg-gray-200 hover:bg-cyan-500 hover:text-white'
-            }`}
-          >
-            <Github size={24} />
-          </a>
-          
-          <a 
-            href="https://www.linkedin.com/in/felipe-qui%C3%B1ehual-92487729b/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
-              isDark 
-                ? 'bg-slate-800 hover:bg-cyan-500' 
-                : 'bg-gray-200 hover:bg-cyan-500 hover:text-white'
-            }`}
-          >
-            <Linkedin size={24} />
-          </a>
-          
-          <a 
-            href="mailto:felipe172401q@gmail.com"
-            className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
-              isDark 
-                ? 'bg-slate-800 hover:bg-cyan-500' 
-                : 'bg-gray-200 hover:bg-cyan-500 hover:text-white'
-            }`}
-          >
-            <Mail size={24} />
-          </a>
+          {/* Iconos de redes sociales */}
+          <div className="flex justify-center gap-4">
+            <a 
+              href="https://github.com/usermaen"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
+                isDark 
+                  ? 'bg-slate-800 hover:bg-cyan-500' 
+                  : 'bg-gray-200 hover:bg-cyan-500 hover:text-white'
+              }`}
+              title="GitHub"
+            >
+              <Github size={24} />
+            </a>
+            
+            <a 
+              href="https://www.linkedin.com/in/felipe-qui%C3%B1ehual-92487729b/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${
+                isDark 
+                  ? 'bg-slate-800 hover:bg-cyan-500' 
+                  : 'bg-gray-200 hover:bg-cyan-500 hover:text-white'
+              }`}
+              title="LinkedIn"
+            >
+              <Linkedin size={24} />
+            </a>
+          </div>
+
+          {/* Información de contacto con texto */}
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <a 
+              href="mailto:felipe172401q@gmail.com"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 ${
+                isDark 
+                  ? 'bg-slate-800 hover:bg-cyan-500 text-slate-300 hover:text-white' 
+                  : 'bg-gray-200 hover:bg-cyan-500 text-gray-700 hover:text-white'
+              }`}
+            >
+              <Mail size={20} />
+              <span className="text-sm">felipe172401q@gmail.com</span>
+            </a>
+            
+            <a 
+              href="https://wa.me/56912345678"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 ${
+                isDark 
+                  ? 'bg-slate-800 hover:bg-green-500 text-slate-300 hover:text-white' 
+                  : 'bg-gray-200 hover:bg-green-500 text-gray-700 hover:text-white'
+              }`}
+            >
+              <Phone size={20} />
+              <span className="text-sm">+56 9 3199 7969</span>
+            </a>
+          </div>
         </motion.div>
 
         {/* Indicador de scroll */}

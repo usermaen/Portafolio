@@ -1,12 +1,23 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
-import { Award, Code, Database, Server, Brain, Shield } from 'lucide-react'
+import { Award, Code, Database, Server, Brain, Shield, Languages } from 'lucide-react'
 
 const Skills = () => {
   const { isDark } = useTheme()
 
   const categorias = [
+    {
+      titulo: 'Idiomas',
+      icono: <Languages className="text-cyan-400" size={24} />,
+      habilidades: [
+        { nombre: 'Español (Nativo)', nivel: 'Avanzado', porcentaje: 100 },
+        { nombre: 'Inglés - Reading', nivel: 'Intermedio', porcentaje: 65 },
+        { nombre: 'Inglés - Listening', nivel: 'Intermedio', porcentaje: 65 },
+        { nombre: 'Inglés - Writing', nivel: 'Básico', porcentaje: 50 },
+        { nombre: 'Inglés - Speaking', nivel: 'Básico', porcentaje: 50 }
+      ]
+    },
     {
       titulo: 'Frontend',
       icono: <Code className="text-cyan-400" size={24} />,
@@ -191,7 +202,9 @@ const Skills = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: catIndex * 0.1 + skillIndex * 0.1 }}
                         className={`h-full rounded-full ${
-                          skill.nivel === 'Avanzado' 
+                          skill.porcentaje === 100
+                            ? 'bg-gradient-to-r from-blue-400 to-blue-500'
+                            : skill.nivel === 'Avanzado' 
                             ? 'bg-gradient-to-r from-green-400 to-green-500' 
                             : skill.nivel === 'Intermedio'
                             ? 'bg-gradient-to-r from-yellow-400 to-yellow-500'
