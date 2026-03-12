@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
 // Importa tu foto desde assets
-import profilePhoto from '../assets/perfil.jpg'
+import profilePhoto from '../assets/perfil.webp'
 
 const Hero = () => {
   const { isDark } = useTheme()
@@ -121,7 +121,7 @@ const Hero = () => {
             </a>
             
             <a 
-              href="https://wa.me/56912345678"
+              href="https://wa.me/56931997969"
               target="_blank"
               rel="noopener noreferrer"
               className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300 hover:scale-105 ${

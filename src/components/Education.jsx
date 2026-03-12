@@ -1,7 +1,9 @@
 import React from 'react'
-import { GraduationCap, Award, BookOpen } from 'lucide-react'
+import { GraduationCap, Award, BookOpen, ExternalLink } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
+import certIngenieria from '../assets/Certificado_173A412FDD5ACA3809032026035429.pdf'
+import certAnalista from '../assets/Certificado_0F7AE9B505FC732709032026035424.pdf'
 
 const Education = () => {
   const { isDark } = useTheme()
@@ -14,9 +16,11 @@ const Education = () => {
       periodo: '2024 - 2025',
       descripcion: 'Formación integral en desarrollo de software, bases de datos, redes, y gestión de proyectos tecnológicos.',
       logros: [
+        'Ranking de Egreso: Top 2 de 78 alumnos',
         'Titulado con distinción',
         'Proyecto de título enfocado en la deserción juvenil (Busquidy)'
-      ]
+      ],
+      certificadoUrl: certIngenieria
     },
     {
       titulo: 'Analista Programador',
@@ -25,8 +29,9 @@ const Education = () => {
       periodo: '2022 - 2023',
       descripcion: 'Formación integral en el entendimiento de Hardware y Software, programación, bases de datos y metodologías de trabajo.',
       logros: [
-        '...',
-      ]
+        'Ranking de Egreso: Top 6 de 133 alumnos',
+      ],
+      certificadoUrl: certAnalista
     },
   ]
 
@@ -126,6 +131,21 @@ const Education = () => {
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {edu.certificadoUrl && edu.certificadoUrl !== '#' && (
+                <div className="mb-6">
+                  <a
+                    href={edu.certificadoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:scale-105"
+                  >
+                    <Award size={18} />
+                    Ver Certificado de Ranking
+                    <ExternalLink size={14} />
+                  </a>
                 </div>
               )}
             </motion.div>
