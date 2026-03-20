@@ -9,7 +9,7 @@ const Experience = () => {
   const experiencias = [
     {
       cargo: 'Intern - Digital Process Improvement',
-      empresa: 'MSD',
+      empresa: 'Merck Sharp y Dohme (I.A) LLC (MSD Chile)',
       periodo: 'Noviembre 2025 - Marzo 2026 (650 horas)',
       descripcion: [
         "Lideré la transición de flujos de trabajo basados en hojas de cálculo hacia un ecosistema digital integrado (Microsoft Power Platform).",
