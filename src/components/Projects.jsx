@@ -30,7 +30,7 @@ const Projects = () => {
       tipo: 'Personal',
       descripcion: 'Sitio web comercial para un centro de terapias. Incluye sistema de reseñas dinámico y una arquitectura serverless escalable.',
       tecnologias: ['React', 'Vite', 'Supabase', 'Render', 'Tailwind CSS'],
-      repositorios: [],
+      repositorios: [{nombre: 'Github', url:'https://github.com/usermaen/terapias-web.git'}],
       demo: 'https://terapias-esperanza.vercel.app/', 
       informacion: 'Proyecto desplegado con arquitectura serverless utilizando Supabase para la persistencia de datos y Render para el hosting.',
       estado: '✅ Finalizado'

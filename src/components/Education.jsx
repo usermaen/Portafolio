@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
 import certIngenieria from '../assets/Certificado_173A412FDD5ACA3809032026035429.pdf'
 import certAnalista from '../assets/Certificado_0F7AE9B505FC732709032026035424.pdf'
+import certTituloIngenieria from '../assets/Certificado_336764B5847AA7F928032026115903.pdf'
 
 const Education = () => {
   const { isDark } = useTheme()
@@ -20,7 +21,8 @@ const Education = () => {
         'Titulado con distinción',
         'Proyecto de título enfocado en la deserción juvenil (Busquidy)'
       ],
-      certificadoUrl: certIngenieria
+      certificadoUrl: certIngenieria,
+      certificadoTituloUrl: certTituloIngenieria
     },
     {
       titulo: 'Analista Programador',
@@ -134,20 +136,38 @@ const Education = () => {
                 </div>
               )}
 
-              {edu.certificadoUrl && edu.certificadoUrl !== '#' && (
-                <div className="mb-6">
+              <div className="flex flex-wrap items-center gap-3 mb-6 mt-6">
+                
+                {/* Botón 1: Certificado de Ranking (Existente) */}
+                {edu.certificadoUrl && edu.certificadoUrl !== '#' && (
                   <a
                     href={edu.certificadoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:scale-105"
+                    className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:scale-105 whitespace-nowrap"
                   >
                     <Award size={18} />
-                    Ver Certificado de Ranking
+                    Ranking
                     <ExternalLink size={14} />
                   </a>
-                </div>
-              )}
+                )}
+
+                {/* Botón 2: Certificado de Título (Nuevo) */}
+                {/* Asegúrate de tener 'certificadoTituloUrl' en tu objeto 'formacion' */}
+                {edu.certificadoTituloUrl && edu.certificadoTituloUrl !== '#' && (
+                  <a
+                    href={edu.certificadoTituloUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 shadow-lg shadow-emerald-500/20 hover:scale-105 whitespace-nowrap"
+                  >
+                    <GraduationCap size={18} />
+                    Ver Título
+                    <ExternalLink size={14} />
+                  </a>
+                )}
+              </div>
+
             </motion.div>
           ))}
         </div>
