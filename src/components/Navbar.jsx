@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Download, Menu, X, Sun, Moon } from 'lucide-react'
+import { FileText, Menu, X, Sun, Moon } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useTheme } from '../context/ThemeContext'
-// Importa tu CV desde assets
-import cvPDF from '../assets/Felipe Quiñehual  - Curriculum.pdf'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -47,18 +45,9 @@ const Navbar = () => {
     { name: 'Habilidades', href: '#habilidades', id: 'habilidades' },
   ]
 
-  // Función para manejar la descarga del CV
-  const handleDownloadCV = (e) => {
-    e.preventDefault()
-    
-    // Descarga desde assets
-    const link = document.createElement('a')
-    link.href = cvPDF
-    link.download = 'CV_Felipe_Quinehual_Monsalve.pdf'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
+  const handleViewCV = () => {
+  window.open('/cv', '_blank'); // Abre tu ruta /cv en una pestaña nueva
+};
 
   return (
     <motion.nav
@@ -124,11 +113,11 @@ const Navbar = () => {
 
             {/* Botón CV - ARREGLADO */}
             <button
-              onClick={handleDownloadCV}
+              onClick={handleViewCV}
               className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-4 py-2 rounded-lg transition-colors duration-200"
             >
-              <Download size={18} />
-              Descargar CV
+              <FileText size={18} />
+              Ver CV
             </button>
           </div>
 
